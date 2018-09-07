@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>WebSocket演示</title>
+</head>
+<body>
+    <p>WebSocket</p>
+    <pre id="result"></pre>
+    <script>
+        window.onload = function () {
+            var wsImpl = window.WebSocket || window.MozWebSocket;
+            window.ws = new wsImpl("ws://localhost:9919/");
+            ws.onopen = function () {
+                document.getElementById("result").innerText += "connection opened\r\n";
+                ws.send("dingxw");
+            }
+            ws.onclose = function () {
+                document.getElementById("result").inerText += "connection closed\r\n";
+            }
+            ws.onmessage = function (evt) {
+                document.getElementById("result").inerText += evt.data + "\r\n";
+            }
+        };
+    </script>
+</body>
+</html>

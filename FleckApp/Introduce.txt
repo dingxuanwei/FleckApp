@@ -1,0 +1,35 @@
+﻿FleckApp是基于Fleck的WebSocket消息推送系统
+Fleck.dll需要引用，如果没有，可以到NuGet里加载，第一个就是
+
+系统运行之前，需要配置FleckApp里面App.config数据库连接
+数据库建立后，里面的表会自动生成，无需手动创建
+
+系统运行后，占用两个端口：
+寄宿与Console的WCF端口，默认9918，App.Config可以修改，WCF地址为：http://localhost:9918/MPService/
+
+请求推送Html的地址为：http://localhost:9918/MPService/PushHtmlMessage
+方法：POST，已实现
+请求推送短信的地址为：http://localhost:9918/MPService/PushSmsMessage
+方法：POST，暂未实现
+请求推送邮件的地址为：http://localhost:9918/MPService/PushEmailMessage
+方法：POST，暂未实现
+
+WebSocket端口，默认为9919，App.Config可以修改
+客户端js代码：
+
+window.onload=function(){
+    var wsImpl=window.WebSocket||window.MozWebSocket;
+    window.ws=new wsImpl("ws://localhost:9919/");
+    ws.onopen=function(){
+        console.log("connection opened");
+        ws.send("regname");
+    }
+    ws.onclose=function(){
+        console.log("connection closed");
+    }
+    ws.onmessage=function(evt){
+        console.log(evt.data);
+    }    
+};
+
+其中regname是注册当前用户，注册后，消息服务器会根据注册名称推送实时消息和已保存的消息

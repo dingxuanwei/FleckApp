@@ -37,7 +37,7 @@ namespace FleckApp
         public int Id { get; set; }
         [MaxLength(50)]
         public string Title { get; set; }
-        [MaxLength(500)]
+        [MaxLength(4000)]
         public string Content { get; set; }
         [MaxLength(50)]
         public string RequestTime { get; set; }
@@ -60,7 +60,7 @@ namespace FleckApp
         public int Id { get; set; }
         [MaxLength(50)]
         public string Title { get; set; }
-        [MaxLength(500)]
+        [MaxLength(4000)]
         public string Content { get; set; }
         [MaxLength(50)]
         public string RequestTime { get; set; }

@@ -8,11 +8,11 @@ Fleck.dll需要引用，如果没有，可以到NuGet里加载，第一个就是
 寄宿与Console的WCF端口，默认9918，App.Config可以修改，WCF地址为：http://localhost:9918/MPService/
 
 请求推送Html的地址为：http://localhost:9918/MPService/PushHtmlMessage
-方法：POST，已实现
+方法：POST，已实现，注册名称RegName必填
 请求推送短信的地址为：http://localhost:9918/MPService/PushSmsMessage
-方法：POST，暂未实现
+方法：POST，暂未实现，手机号码Phone必填
 请求推送邮件的地址为：http://localhost:9918/MPService/PushEmailMessage
-方法：POST，暂未实现
+方法：POST，暂未实现，邮件地址Address必填
 
 WebSocket端口，默认为9919，App.Config可以修改
 客户端js代码：
@@ -33,3 +33,6 @@ window.onload=function(){
 };
 
 其中regname是注册当前用户，注册后，消息服务器会根据注册名称推送实时消息和已保存的消息
+
+Content是字符串类型，可以保存JSON，HTML等数据，长度最大支持4000
+

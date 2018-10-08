@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
@@ -13,6 +14,7 @@ namespace FleckApp
         public MPModel()
             : base("name=SqlServer")
         {
+            
         }
 
         public virtual DbSet<MsgToBeSent> MsgToBeSents { get; set; }
@@ -37,14 +39,15 @@ namespace FleckApp
         public int Id { get; set; }
         [MaxLength(50)]
         public string Title { get; set; }
-        [MaxLength(4000)]
+        [Column(TypeName = "varchar")]
+        [MaxLength(8000)]
         public string Content { get; set; }
         [MaxLength(50)]
         public string RequestTime { get; set; }
         [MaxLength(50)]
         public string ExpriedTime { get; set; }
         public int MType { get; set; }
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string RegName { get; set; }
         [MaxLength(50)]
         public string Phone { get; set; }
@@ -60,7 +63,8 @@ namespace FleckApp
         public int Id { get; set; }
         [MaxLength(50)]
         public string Title { get; set; }
-        [MaxLength(4000)]
+        [Column(TypeName = "varchar")]
+        [MaxLength(8000)]
         public string Content { get; set; }
         [MaxLength(50)]
         public string RequestTime { get; set; }

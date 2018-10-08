@@ -13,6 +13,10 @@ namespace FleckApp
     {
         static void Main(string[] args)
         {
+            var db = new MPModel();
+            var count = db.MsgToBeSents.Count();
+            Console.WriteLine("待发送消息数量：" + count + " 条");
+
             if (args.Length > 0)
             {
                 try

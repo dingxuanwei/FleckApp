@@ -13,15 +13,29 @@ namespace DemoApp
     {
         static void Main(string[] args)
         {
-            for (int i = 1; i <= 100; i++)
+            for (int i = 1; i <= 10; i++)
             {
+                var ctx = new
+                {
+                    ID = Guid.NewGuid().ToString(),
+                    Auditor = "审核人",
+                    AntiAuditReason = "反审核理由",
+                    Notice = "通知人",
+                    Applicant = "申请人",
+                    MenuCode = "菜单编号" + i,
+                    SubmitTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    OrderNo = "订单号"
+                };
+
+                string content = Newtonsoft.Json.JsonConvert.SerializeObject(ctx);
+
                 var model = new HtmlMsg()
                 {
-                    Title = "报价单",
-                    Content = "报价单" + i + "详情：https://www.baidu.com",
+                    Title = "推送测试",
+                    Content = content,
                     RequestTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     ExpriedTime = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss"),
-                    RegName = "dingxw"
+                    RegName = "admin"
                 };
                 string s = Newtonsoft.Json.JsonConvert.SerializeObject(model);
 

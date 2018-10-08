@@ -56,6 +56,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="default.css" />
+    <Content Include="highlight.pack.js" />
     <Content Include="Index.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
